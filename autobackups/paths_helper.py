@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import datetime
+from . import win32helpers
 
 class PathsHelper(object):
 	platform = False
@@ -88,6 +89,9 @@ class PathsHelper(object):
 
 		path = path.replace('/', '\\')
 
+		# transform subst mapping drive to actual path
+		if re.search(r'^(\w):', path):
+			path = win32helpers.get_mapping(path[:2]) + path[2:]
 
 		# windows only: transform C: into just C
 		path = re.sub(r'^(\w):', r'\1', path)
