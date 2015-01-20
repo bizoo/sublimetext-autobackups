@@ -4,7 +4,7 @@ from ctypes.wintypes import LPWSTR, DWORD
 
 # Return the subst path for the drive or the drive when there's no subst
 # subst D: -> C:\mypath
-# get_mapping('D') -> 'C:\\mypath'
+# get_mapping('D:') -> 'C:\\mypath'
 def get_mapping(drive):
     _QueryDosDeviceW = ctypes.windll.kernel32.QueryDosDeviceW
     _QueryDosDeviceW.argtypes = [LPWSTR, LPWSTR, DWORD]

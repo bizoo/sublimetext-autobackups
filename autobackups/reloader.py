@@ -3,14 +3,13 @@
 # @link 			http://long.ge
 # @license 		GNU General Public License version 2 or later;
 
-import sublime
 import sys
 from imp import reload
 
 
 reload_mods = []
 for mod in sys.modules:
-    if mod[0:11].lower() == 'autobackups' and sys.modules[mod] != None:
+    if mod[0:11].lower() == 'autobackups' and sys.modules[mod] is not None:
         reload_mods.append(mod)
 
 
